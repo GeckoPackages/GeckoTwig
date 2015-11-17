@@ -72,6 +72,8 @@ class ReadMeGenerator
 # Twig extensions
 
 Provides additional filters and tests to be used with Twig (http://twig.sensiolabs.org).
+
+[![Build Status](https://travis-ci.org/GeckoPackages/Twig.svg)](https://travis-ci.org/GeckoPackages/Twig)
 #GENERATED_LISTING#
 See below for details.
 
