@@ -4,6 +4,8 @@
 
 Provides additional filters and tests to be used with Twig (http://twig.sensiolabs.org).
 
+[![Build Status](https://travis-ci.org/GeckoPackages/Twig.svg)](https://travis-ci.org/GeckoPackages/Twig)
+
 #### Filters
 - **Bytes**
   Formats a number of bytes with binary or SI prefix multiple, either automatically or by given symbol.
