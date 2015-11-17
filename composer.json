@@ -1,5 +1,5 @@
 {
-  "name": "gecko-packages/twig",
+  "name": "gecko-packages/gecko-twig",
   "type": "library",
   "homepage": "https://github.com/GeckoPackages",
   "description": "Additional Twig filters and tests.",
