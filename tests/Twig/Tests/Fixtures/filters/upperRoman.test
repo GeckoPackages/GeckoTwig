@@ -1,0 +1,70 @@
+--TEST--
+Test for the "upperRoman" filter.
+--TEMPLATE--
+{{ ''|upperRoman }}
+{{ 0|upperRoman }}
+{{ 'mmmmm'|upperRoman }}
+{{ 'ammmmm'|upperRoman }}
+
+{{ 'cccc'|upperRoman }}
+{{ 'xxxx'|upperRoman }}
+{{ 'iiii'|upperRoman }}
+{{ 'mmm'|upperRoman }}
+{{ 'ccc'|upperRoman }}
+{{ 'xxx'|upperRoman }}
+{{ 'xxx'|upperRoman('loose') }}
+{{ 'iii'|upperRoman }}
+
+{{ text|upperRoman }}
+
+{{ 'a ch'|upperRoman }}
+{{ 'a vi b'|upperRoman }}
+{{ ' vi .'|upperRoman }}
+{{ 'iv a'|upperRoman }}
+{{ '[cm]'|upperRoman }}
+{{ 'vi]'|upperRoman }}
+{{ '[iv |ii. z'|upperRoman }}
+{{ ' ii'|upperRoman }}
+{{ 'i'|upperRoman }}
+{{ '.i'|upperRoman }}
+{{ 'MmMcCCXIi'|upperRoman }}
+{{ 'mmmcccxii'|upperRoman }}
+{{ 'MMMCCCXII'|upperRoman }}
+{{ nonStrict|upperRoman }}
+{{ nonStrict|upperRoman('loose') }}
+{{ 'iixx, xiix, iii, mdcdiii, testxi, mmmm'|upperRoman('loose-order') }}
+--DATA--
+return array('text' => 'mcmliv. chapter sub xi not XiCa', 'nonStrict'  => 'iiii, iiiiii, viiii, xxxxxx, mdccccx or even mmmmm')
+--EXPECT--
+
+0
+mmmmm
+ammmmm
+
+cccc
+xxxx
+iiii
+MMM
+CCC
+XXX
+XXX
+III
+
+MCMLIV. chapter sub XI not XiCa
+
+a ch
+a VI b
+ VI .
+IV a
+[CM]
+VI]
+[IV |II. z
+ II
+I
+.I
+MMMCCCXII
+MMMCCCXII
+MMMCCCXII
+iiii, iiiiii, viiii, xxxxxx, mdccccx or even mmmmm
+IIII, IIIIII, VIIII, XXXXXX, MDCCCCX or even MMMMM
+IIXX, XIIX, III, MDCDIII, testxi, MMMM

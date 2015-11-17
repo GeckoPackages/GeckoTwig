@@ -1,0 +1,10 @@
+--TEST--
+Test for the "filePermissions" filter.
+--TEMPLATE--
+{{ 755|filePermissions }}
+{{ perm|filePermissions }}
+--DATA--
+return array('perm' => '0444')
+--EXPECT--
+urwxr-xr-x
+ur--r--r--

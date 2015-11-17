@@ -1,0 +1,128 @@
+--TEST--
+Test for the "bytes" filter.
+--CONDITION--
+PHP_INT_MAX === 9223372036854775807
+--TEMPLATE--
+# auto,bin mode positive numbers
+{{ 1|bytes }}
+{{ 1024|bytes }}
+{{ 1048576|bytes }}
+{{ 1073741824|bytes }}
+{{ 1099511627776|bytes }}
+{{ 1125899906842624|bytes }}
+{{ 1152921504606846976|bytes }}
+{{ 1180591620717411303424|bytes }}
+{{ 1208925819614629174706176|bytes }}
+
+# auto,SI mode positive numbers
+{{ 1|bytes('auto,SI') }}
+{{ 1000|bytes('auto,SI') }}
+{{ 1000000|bytes('auto,SI') }}
+{{ 1000000000|bytes('auto,SI') }}
+{{ 1001000000000|bytes('auto,SI') }}
+{{ 1000000000000000|bytes('auto,SI') }}
+{{ 1001000000000000000|bytes('auto,SI') }}
+{{ 1000000000000000000000|bytes('auto,SI') }}
+{{ 1000100000000000000000010|bytes('auto,SI') }}
+{{ SIkilobytes|bytes('auto,SI') }}
+{{ (SIkilobytes * SIkilobytes)|bytes('auto,SI') }}
+{{ (SIkilobytes / 2)|bytes('auto,SI') }}
+
+# large values tests
+{{ yobi|bytes('b') }}
+{{ yobi|bytes('B') }}
+{{ yobi|bytes('KiB') }}
+{{ yobi|bytes('MiB') }}
+{{ yobi|bytes('GiB') }}
+{{ yobi|bytes('TiB') }}
+{{ yobi|bytes('PiB') }}
+{{ yobi|bytes('EiB') }}
+{{ yobi|bytes('ZiB') }}
+{{ yobi|bytes('YiB') }}
+
+# zero tests
+{{ 0|bytes }}
+{{ 0|bytes('auto,SI') }}
+{{ 0|bytes('YiB') }}
+
+# negative numbers tests
+{{ negK|bytes }}
+{{ (negK * mebi)|bytes }}
+{{ (SIkilobytes * -1)|bytes('auto,SI') }}
+
+# bit test
+{{ (1024*2)|bytes('Kib') }}
+{{ 1000|bytes('KB') }}
+{{ 2000|bytes('kb') }}
+
+# number formatting test
+{{ (250.5 * mebi)|bytes('auto,bin', '%number% %symbol%', 4, ',', '') }}
+{{ (mebi / 2)|bytes('auto,bin', '%number%/y/%symbol%', 3, 'x', '') }}
+
+# escaping test
+{{ 1000|bytes('b', '%number% <span>%symbol%</span>', 2, ',', '.') }}
+{{ 1000|bytes('B', '%number% <span>%symbol%</span>', 2, ',', '.')|raw }}
+
+--DATA--
+return array('mebi' => 1048576, 'gibi' => 1073741824, 'yobi' => 1208925819614629174706176, 'SIkilobytes' => 1000, 'negK' => -1024)
+--EXPECT--
+
+# auto,bin mode positive numbers
+1B
+1KiB
+1MiB
+1GiB
+1TiB
+1PiB
+1EiB
+1ZiB
+1YiB
+
+# auto,SI mode positive numbers
+1B
+1KB
+1MB
+1GB
+1TB
+1PB
+1EB
+1ZB
+1YB
+1KB
+1MB
+500B
+
+# large values tests
+9,671,406,556,917,033,397,649,408b
+1,208,925,819,614,629,174,706,176B
+1,180,591,620,717,411,303,424KiB
+1,152,921,504,606,846,976MiB
+1,125,899,906,842,624GiB
+1,099,511,627,776TiB
+1,073,741,824PiB
+1,048,576EiB
+1,024ZiB
+1YiB
+
+# zero tests
+0B
+0B
+0YiB
+
+# negative numbers tests
+-1KiB
+-1GiB
+-1KB
+
+# bit test
+16Kib
+1KB
+16kb
+
+# number formatting test
+250,5000 MiB
+512x000/y/KiB
+
+# escaping test
+8.000,00 &lt;span&gt;b&lt;/span&gt;
+1.000,00 <span>B</span>

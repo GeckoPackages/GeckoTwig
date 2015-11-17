@@ -1,0 +1,70 @@
+--TEST--
+Test for the "lowerRoman" filter.
+--TEMPLATE--
+{{ ''|lowerRoman }}
+{{ 0|lowerRoman }}
+{{ 'MMMMM'|lowerRoman }}
+{{ 'AMMMMM'|lowerRoman }}
+
+{{ 'CCCC'|lowerRoman }}
+{{ 'XXXX'|lowerRoman }}
+{{ 'IIII'|lowerRoman }}
+{{ 'MMM'|lowerRoman }}
+{{ 'CCC'|lowerRoman }}
+{{ 'XXX'|lowerRoman }}
+{{ 'XXX'|lowerRoman('loose') }}
+{{ 'III chapter three'|lowerRoman }}
+
+{{ text|lowerRoman }}
+
+{{ 'a CH'|lowerRoman }}
+{{ 'a VI a'|lowerRoman }}
+{{ ' VI .'|lowerRoman }}
+{{ 'IV a'|lowerRoman }}
+{{ '[CM]'|lowerRoman }}
+{{ 'VI]'|lowerRoman }}
+{{ '[IV |ii. z'|lowerRoman }}
+{{ ' II'|lowerRoman }}
+{{ 'I'|lowerRoman }}
+{{ '.I'|lowerRoman }}
+{{ 'MMMcccXII'|lowerRoman }}
+{{ 'mmmcccxII'|lowerRoman }}
+{{ 'mmmcccxii'|lowerRoman }}
+{{ nonStrict|lowerRoman }}
+{{ nonStrict|lowerRoman('loose') }}
+{{ 'IIXX, XIiX, III, MDcdIII, TESTXI, MMMM'|lowerRoman('loose-order') }}
+--DATA--
+return array('text' => 'MCMLIV. Chapter sub XI NOT XICA', 'nonStrict'  => 'IIII, IIIIII, VIIII, XXXXXX, MDCCCCX Or even MMMMM')
+--EXPECT--
+
+0
+MMMMM
+AMMMMM
+
+CCCC
+XXXX
+IIII
+mmm
+ccc
+xxx
+xxx
+iii chapter three
+
+mcmliv. Chapter sub xi NOT XICA
+
+a CH
+a vi a
+ vi .
+iv a
+[cm]
+vi]
+[iv |ii. z
+ ii
+i
+.i
+mmmcccxii
+mmmcccxii
+mmmcccxii
+IIII, IIIIII, VIIII, XXXXXX, MDCCCCX Or even MMMMM
+iiii, iiiiii, viiii, xxxxxx, mdccccx Or even mmmmm
+iixx, xiix, iii, mdcdiii, TESTXI, mmmm
