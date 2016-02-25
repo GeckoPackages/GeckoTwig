@@ -30,11 +30,11 @@ PHP 5.4.0 (for Traits and `callable` type)
 
 ### Install
 
-The package can be installed using Composer (https://getcomposer.org/).
+The package can be installed using [Composer](https://getcomposer.org/).
 Add the package to your `composer.json`.
 
 ```
-"require-dev": {
+"require": {
     "gecko-packages/gecko-twig" : "1.0"
 }
 ```
