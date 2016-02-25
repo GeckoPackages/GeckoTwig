@@ -2,7 +2,7 @@
 
 # Twig extensions
 
-Provides additional filters and tests to be used with Twig (http://twig.sensiolabs.org).
+Provides additional filters and tests to be used with [Twig](http://twig.sensiolabs.org).
 
 #### Filters
 - **Bytes**
@@ -35,7 +35,7 @@ Add the package to your `composer.json`.
 
 ```
 "require": {
-    "gecko-packages/gecko-twig" : "1.0"
+    "gecko-packages/gecko-twig" : "^1.0"
 }
 ```
 
