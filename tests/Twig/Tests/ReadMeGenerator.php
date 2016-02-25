@@ -71,7 +71,7 @@ class ReadMeGenerator
 
 # Twig extensions
 
-Provides additional filters and tests to be used with Twig (http://twig.sensiolabs.org).
+Provides additional filters and tests to be used with [Twig](http://twig.sensiolabs.org).
 #GENERATED_LISTING#
 See below for details.
 
@@ -81,12 +81,12 @@ PHP 5.4.0 (for Traits and `callable` type)
 
 ### Install
 
-The package can be installed using Composer (https://getcomposer.org/).
+The package can be installed using [Composer](https://getcomposer.org/).
 Add the package to your `composer.json`.
 
 ```
-"require-dev": {
-    "gecko-packages/gecko-twig" : "1.0"
+"require": {
+    "gecko-packages/gecko-twig" : "^1.0"
 }
 ```
 
