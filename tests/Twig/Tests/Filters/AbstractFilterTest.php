@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-abstract class AbstractFilterTest extends PHPUnit_Framework_TestCase
+abstract class AbstractFilterTest extends \PHPUnit_Framework_TestCase
 {
     use TwigTestTrait;
 

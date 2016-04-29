@@ -13,7 +13,7 @@ class SITest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime
-     * @expectedExceptionMessage Unsupported symbol "X".
+     * @expectedExceptionMessageRegExp #^Unsupported symbol "X".$#
      */
     public function testInvalidSymbol1()
     {
@@ -24,7 +24,7 @@ class SITest extends AbstractFilterTest
 
     /**
      * @expectedException Twig_Error_Runtime
-     * @expectedExceptionMessage Unsupported symbol "XYZ".
+     * @expectedExceptionMessageRegExp #^Unsupported symbol "XYZ".$#
      */
     public function testInvalidSymbol2()
     {
