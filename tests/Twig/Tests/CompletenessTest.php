@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-class CompletenessTest extends PHPUnit_Framework_TestCase
+class CompletenessTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test the class name of a filter matches the name of the filter itself.
