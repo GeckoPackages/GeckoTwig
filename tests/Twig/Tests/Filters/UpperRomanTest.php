@@ -13,7 +13,7 @@ class UpperRomanTest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime
-     * @expectedExceptionMessage Unsupported match mode "invalid".
+     * @expectedExceptionMessageRegExp #^Unsupported match mode "invalid".$#
      */
     public function testInvalidMatchMode()
     {
