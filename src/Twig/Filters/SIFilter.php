@@ -57,10 +57,10 @@ class SIFilter extends \Twig_SimpleFilter
         parent::__construct(
             'SI',
             function (Twig_Environment $env, $number, $symbol = 'auto', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
-                $symbolMag = array(
+                $symbolMag = [
                     'y', 'z', 'a', 'f', 'p', 'n', 'u', 'μ', 'm', 'c', 'd',  // < 1 note: double 'u'/'μ'
                     'da', 'h', 'k', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', // > 1 note: double 'k'/'K 'and two char. 'da'
-                );
+                ];
 
                 if (1 === strlen($symbol) || 'μ' === $symbol) {
                     $index = array_search($symbol, $symbolMag, true);
@@ -164,7 +164,7 @@ class SIFilter extends \Twig_SimpleFilter
 
                 return str_replace('%number%', $number, $format);
             },
-            array('needs_environment' => true) // 'is_safe' => false: since the given $format which might need escaping is returned.
+            ['needs_environment' => true] // 'is_safe' => false: since the given $format which might need escaping is returned.
         );
     }
 }

@@ -38,7 +38,7 @@ class SITest extends AbstractFilterTest
         $filter = $this->getFilter();
         $call = $filter->getCallable();
         $result = $call(new Twig_Environment(), 0.0009999999999999999, 'auto', '%number% %symbol%', 16, ',', '');
-        $this->assertTrue(is_string($result));
+        $this->assertInternalType('string', $result);
         $this->assertStringStartsWith('999,9999999999', $result);
         $this->assertStringEndsWith(' u', $result);
     }

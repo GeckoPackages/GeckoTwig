@@ -17,29 +17,29 @@ class ReadMeGenerator
     public function generateReadMe()
     {
         $docDir = __DIR__.'/../../../docs/';
-        $docs = array();
+        $docs = [];
         foreach (new DirectoryIterator($docDir) as $item) {
             if (!$item->isDir() || $item->isDot()) {
                 continue;
             }
 
             $package = $item->getFilename();
-            $docs[$package] = array();
+            $docs[$package] = [];
             foreach (new DirectoryIterator($item->getRealPath()) as $doc) {
                 if ($doc->isDir() || $doc->isDot()) {
                     continue;
                 }
 
                 $classShort = ucfirst(substr($doc->getFilename(), 0, -3)).ucfirst(substr($package, 0, -1));
-                $docs[$package][$doc->getRealPath()] = array(
+                $docs[$package][$doc->getRealPath()] = [
                     'fileName' => $doc->getFilename(),
                     'file' => $doc->getRealPath(),
                     'doc' => $this->getDoc($doc->getRealPath()),
-                    'class' => array(
+                    'class' => [
                         'short' => $classShort,
                         'full' => sprintf('GeckoPackages\\Twig\\%s\\%s', ucfirst($package), $classShort),
-                    ),
-                );
+                    ],
+                ];
             }
 
             uksort(
@@ -59,6 +59,7 @@ class ReadMeGenerator
             $listing .= sprintf("\n#### %s\n", $packageName);
             $doc .= sprintf("\n## %s\n\n", $packageName);
 
+            /** @var array $package */
             foreach ($package as $values) {
                 $docs = $values['doc'];
                 $listing .= sprintf("- **%s**\n  %s\n", $docs['title'], $docs['short']);
@@ -66,7 +67,7 @@ class ReadMeGenerator
             }
         }
 
-        $readMeTemplate = <<<EOF
+        $readMeTemplate = <<<'EOF'
 #### GeckoPackages
 
 # Twig extensions
@@ -77,7 +78,7 @@ See below for details.
 
 ### Requirements
 
-PHP 5.4.0 (for Traits and `callable` type)
+PHP 5.4 (PHP7 supported). Optional HHVM support >= 3.9.
 
 ### Install
 
@@ -108,7 +109,7 @@ EOF;
             throw new \UnexpectedValueException(sprintf('Cannot read doc file "%s".', $fileName));
         }
 
-        $docs = array();
+        $docs = [];
         $raw = file_get_contents($fileName);
         $lines = explode("\n", $raw);
 
@@ -117,7 +118,7 @@ EOF;
         }
 
         $docs['title'] = trim($lines[0]);
-        if ('### ' !== substr($docs['title'], 0, 4)) {
+        if (0 !== strpos($docs['title'], '### ')) {
             throw new \UnexpectedValueException(sprintf('Wrong format for title, should start with "### " in doc file "%s".', $fileName));
         }
 
@@ -149,7 +150,7 @@ EOF;
             throw new \UnexpectedValueException(sprintf('Wrong format for description (line 4) in doc file "%s".', $fileName));
         }
 
-        $exists = array('#### Examples', '```Twig', '```');
+        $exists = ['#### Examples', '```Twig', '```'];
         for ($i = 4; $i < $linesCount; ++$i) {
             if (false !== $key = array_search($lines[$i], $exists, true)) {
                 unset($exists[$key]);
