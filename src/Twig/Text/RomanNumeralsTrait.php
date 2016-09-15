@@ -57,32 +57,32 @@ namespace GeckoPackages\Twig\Text;
 trait RomanNumeralsTrait
 {
     /**
-     * @param string   $string    String to modify.
-     * @param string   $matchMode 'strict', 'loose' or 'loose-order'.
-     * @param callable $callBack  Actual code that does the manipulation.
-     *
-     * @return string
+     * @param string   $string    String to modify
+     * @param string   $matchMode 'strict', 'loose' or 'loose-order'
+     * @param callable $callBack  Actual code that does the manipulation
      *
      * @throws \Twig_Error_Runtime
+     *
+     * @return string
      */
     private function numeralRomanMatchCallBack($string, $matchMode, callable $callBack)
     {
         switch ($matchMode) {
-            case 'strict' : {
+            case 'strict': {
                 // TODO: Empty strings are also captured. Remove this without performance impact
                 $matchMode = '#\b(M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b)#i';
                 break;
             }
-            case 'loose' : {
+            case 'loose': {
                 // TODO: Empty strings are also captured. Remove this without performance impact
                 $matchMode = '#\b(M*(?:CM|CD|D?C*)(?:XC|XL|L?X*)(?:IX|IV|V?I*)\b)#i';
                 break;
             }
-            case 'loose-order' : {
+            case 'loose-order': {
                 $matchMode = '#\b([MDCLXVI]+)\b#i';
                 break;
             }
-            default : {
+            default: {
                 throw new \Twig_Error_Runtime(sprintf('Unsupported match mode "%s".', $matchMode));
             }
         }

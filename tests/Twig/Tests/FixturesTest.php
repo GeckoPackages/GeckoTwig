@@ -25,7 +25,7 @@ final class FixturesTest extends \Twig_Test_IntegrationTestCase
      */
     protected function getExtensions()
     {
-        return array(new ExtensionStub());
+        return [new ExtensionStub()];
     }
 
     /**

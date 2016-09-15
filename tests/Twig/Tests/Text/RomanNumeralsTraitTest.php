@@ -21,6 +21,7 @@ class RomanNumeralsTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalid()
     {
-        $this->numeralRomanMatchCallBack('xx', '__invalid__', function () {});
+        $this->numeralRomanMatchCallBack('xx', '__invalid__', function () {
+        });
     }
 }

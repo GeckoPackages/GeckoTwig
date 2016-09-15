@@ -33,7 +33,7 @@ class UpperFirstFilter extends \Twig_SimpleFilter
 
                 return ucfirst($string);
             },
-            array('needs_environment' => true) // 'is_safe' => false: since the given $format which might need escaping is returned.
+            ['needs_environment' => true] // 'is_safe' => false: since the given $format which might need escaping is returned.
         );
     }
 }
