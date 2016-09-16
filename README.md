@@ -26,7 +26,7 @@ See below for details.
 
 ### Requirements
 
-PHP 5.4.0 (for Traits and `callable` type)
+PHP 5.4 (PHP7 supported). Optional HHVM support >= 3.9.
 
 ### Install
 

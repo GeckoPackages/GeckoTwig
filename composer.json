@@ -1,20 +1,20 @@
 {
-  "name": "gecko-packages/gecko-twig",
-  "type": "library",
-  "homepage": "https://github.com/GeckoPackages",
-  "description": "Additional Twig filters and tests.",
-  "license": "MIT",
-  "keywords" : ["Twig", "Filter", "Bytes", "SI", "Roman"],
-  "require": {
-    "php": "^5.4 || ^7.0",
-    "twig/twig":">=1.18.0"
-  },
-  "suggest": {
-    "ext-mbstring": "For multi byte character support."
-  },
-  "autoload": {
-    "psr-4": {
-      "GeckoPackages\\Twig\\": "src\\Twig"
+    "name": "gecko-packages/gecko-twig",
+    "type": "library",
+    "homepage": "https://github.com/GeckoPackages",
+    "description": "Additional Twig filters and tests.",
+    "license": "MIT",
+    "keywords" : ["Twig", "Filter", "Bytes", "SI", "Roman"],
+    "require": {
+        "php": ">=5.4.0",
+        "twig/twig":">=1.18.0"
+    },
+    "suggest": {
+        "ext-mbstring": "For multi byte character support."
+    },
+    "autoload": {
+        "psr-4": {
+            "GeckoPackages\\Twig\\": "src\\Twig"
+        }
     }
-  }
 }

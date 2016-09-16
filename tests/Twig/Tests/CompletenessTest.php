@@ -67,9 +67,10 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
     {
         $filters = new ExtensionStub();
         $filters = $filters->getFilters();
-        $exploded = array();
+        $exploded = [];
+        /** @var Twig_SimpleFilter[] $filters */
         foreach ($filters as $filter) {
-            $exploded[] = array($filter);
+            $exploded[] = [$filter];
         }
 
         return $exploded;
@@ -118,9 +119,10 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
     {
         $tests = new ExtensionStub();
         $tests = $tests->getTests();
-        $exploded = array();
+        $exploded = [];
+        /** @var Twig_SimpleTest[] $tests */
         foreach ($tests as $filter) {
-            $exploded[] = array($filter);
+            $exploded[] = [$filter];
         }
 
         return $exploded;
@@ -137,7 +139,7 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
     {
         $content = @file_get_contents($file);
         $this->assertNotFalse($content, sprintf('Failed to get content of "%s".', $file));
-        $this->assertFalse('' === trim($content), sprintf('File may not be empty "%s".', $file));
+        $this->assertNotSame('', trim($content), sprintf('File may not be empty "%s".', $file));
     }
 
     private function getDocDir()

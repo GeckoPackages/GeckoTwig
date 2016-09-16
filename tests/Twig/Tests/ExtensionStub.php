@@ -48,7 +48,7 @@ final class ExtensionStub extends Twig_Extension
 
     private function getTwigAddOns($type)
     {
-        $addOn = array();
+        $addOn = [];
         $addOnDir = new DirectoryIterator(__DIR__.'/../../../src/Twig/'.$type);
         foreach ($addOnDir as $file) {
             if ($file->isDot()) {

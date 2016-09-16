@@ -58,16 +58,15 @@ class BytesFilter extends \Twig_SimpleFilter
             'bytes',
             /**
              * @param number $value
-             * @param string $symbol any SI ('KB', 'Mb', ..) or binary symbol ('KiB', 'Kib', 'MiB', ..), or 'auto,SI', 'auto,bin', 'b' or 'B'.
+             * @param string $symbol any SI ('KB', 'Mb', ..) or binary symbol ('KiB', 'Kib', 'MiB', ..), or 'auto,SI', 'auto,bin', 'b' or 'B'
              * @param string $format
              *
              * @return string
              */
             function (Twig_Environment $env, $number, $symbol = 'auto,bin', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
-
                 $symbolLength = strlen($symbol);
 
-                $symbolMag = array(
+                $symbolMag = [
                     'k' => 1, // kilo
                     'K' => 1, // "
                     'M' => 2, // mega
@@ -77,7 +76,7 @@ class BytesFilter extends \Twig_SimpleFilter
                     'E' => 6, // exa
                     'Z' => 7, // zetta
                     'Y' => 8, // yotta
-                );
+                ];
 
                 if ($symbolLength === 1) {
                     if ('b' === $symbol) {
@@ -88,7 +87,7 @@ class BytesFilter extends \Twig_SimpleFilter
                 } elseif ($symbolLength <= 3) {
                     // SI vs. bin.
                     switch ($symbol[1]) {
-                        case 'i' : { // Binary
+                        case 'i': { // Binary
                             if ($symbolLength < 3) {
                                 throw new \Twig_Error_Runtime(sprintf('Binary symbol must be end with either \'b\' or \'B\', got "%s".', $symbol));
                             } elseif ('b' === $symbol[2]) { // binary| bit
@@ -100,16 +99,16 @@ class BytesFilter extends \Twig_SimpleFilter
                             $magnitude = 1024;
                             break;
                         }
-                        case 'b' : { // SI | bit
+                        case 'b': { // SI | bit
                             $magnitude = 1000;
                             $number *= 8;
                             break;
                         }
-                        case 'B' : { // SI | byte
+                        case 'B': { // SI | byte
                             $magnitude = 1000;
                             break;
                         }
-                        default : {
+                        default: {
                             throw new \Twig_Error_Runtime(sprintf('Symbol must be binary (b|B[x]) or SI and must end with either \'b\' or \'B\', got "%s".', $symbol));
                         }
                     }
@@ -185,7 +184,7 @@ class BytesFilter extends \Twig_SimpleFilter
 
                 return str_replace('%number%', $number, $format);
             },
-            array('needs_environment' => true) // 'is_safe' => false: since the given $format which might need escaping is returned.
+            ['needs_environment' => true] // 'is_safe' => false: since the given $format which might need escaping is returned.
         );
     }
 }

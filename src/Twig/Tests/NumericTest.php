@@ -30,7 +30,7 @@ class NumericTest extends \Twig_SimpleTest
         parent::__construct(
             'numeric',
             null,
-            array('node_class' => 'GeckoPackages\Twig\Tests\NumericTestNode')
+            ['node_class' => 'GeckoPackages\Twig\Tests\NumericTestNode']
         );
     }
 }
