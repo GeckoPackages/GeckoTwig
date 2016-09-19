@@ -1,0 +1,30 @@
+--TEST--
+Test for the "date" filter.
+--TEMPLATE--
+zero int     [{{ zeroInt|date }}]
+zero float   [{{ zeroFloat|date }}]
+zero string  [{{ zeroStr|date }}]
+empty string [{{ emptyStr|date }}]
+null value   [{{ nullVal|date }}]
+false value  [{{ falseVal|date }}]
+timestamp    [{{ timestamp|date('m/d/Y') }}]
+
+--DATA--
+return [
+    'zeroInt'    => 0,
+    'zeroFloat'  => 0.0,
+    'zeroStr'    => '0',
+    'emptyStr'   => '',
+    'nullVal'    => null,
+    'falseVal'   => false,
+    'timestamp'  => 1474293289
+]
+--EXPECT--
+
+zero int     []
+zero float   []
+zero string  []
+empty string []
+null value   []
+false value  []
+timestamp    [09/19/2016]

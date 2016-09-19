@@ -7,6 +7,8 @@ Provides additional filters and tests to be used with [Twig](http://twig.sensiol
 #### Filters
 - **Bytes**
   Formats a number of bytes with binary or SI prefix multiple, either automatically or by given symbol.
+- **Date**
+  Replacement for the date filter of [Twig](http://twig.sensiolabs.org/doc/filters/date.html), returns an empty string if the date is `empty()`.
 - **File Permissions**
   Formats file permissions in symbolic (UNIX) notation.
 - **Lower Roman**
@@ -87,6 +89,30 @@ The default is `auto,bin`.
 ```
 
 The filter uses the number formatting set on the `Core` extension of Twig. The output can be customized even more by passing a `format`.
+
+### DateFilter
+###### GeckoPackages\Twig\Filters\DateFilter
+Replacement of the date filter provided by Twig. Returns an empty string `""` if the give date to format is `empty()` (and not an `array`).
+If it is not the method returns the value as provided by the default date filter of Twig.
+
+#### Examples
+
+```Twig
+zero int     [{{ 0|date }}]
+{# zero int     [] #}
+zero float   [{{ 0.0|date }}]
+{# zero float   [] #}
+zero string  [{{ '0'|date }}]
+{# zero string  [] #}
+empty string [{{ ''|date }}]
+{# empty string [] #}
+null value   [{{ null|date }}]
+{# null value   [] #}
+false value  [{{ false|date }}]
+{# false value  [] #}
+timestamp    [{{ timestamp|date('m/d/Y') }}]
+{# timestamp    [09/19/2016] #}
+```
 
 ### FilePermissionsFilter
 ###### GeckoPackages\Twig\Filters\FilePermissionsFilter

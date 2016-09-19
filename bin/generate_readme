@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
-require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/tests/Twig/Tests/ReadMeGenerator.php';
+require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../tests/Twig/Tests/ReadMeGenerator.php';
 
-$readMeFile = __DIR__.'/README.md';
+$readMeFile = __DIR__.'/../README.md';
 if (!file_exists($readMeFile)) {
     echo sprintf("\nCannot find \"%s\".\n", $readMeFile);
     exit(-1);
