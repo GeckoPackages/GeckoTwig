@@ -87,7 +87,7 @@ Add the package to your `composer.json`.
 
 ```
 "require": {
-    "gecko-packages/gecko-twig" : "^1.0"
+    "gecko-packages/gecko-twig" : "^v1.1"
 }
 ```
 
