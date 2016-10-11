@@ -4,10 +4,13 @@
     "homepage": "https://github.com/GeckoPackages",
     "description": "Additional Twig filters and tests.",
     "license": "MIT",
-    "keywords" : ["Twig", "Filter", "Bytes", "SI", "Roman"],
+    "keywords": ["Twig", "Filter", "Bytes", "SI", "Roman"],
     "require": {
-        "php": ">=5.4.0",
-        "twig/twig":">=1.18.0"
+        "php": "^5.4.0 || >=7.0 <7.2",
+        "twig/twig": "^1.26.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^2.8|^3.0"
     },
     "suggest": {
         "ext-mbstring": "For multi byte character support."

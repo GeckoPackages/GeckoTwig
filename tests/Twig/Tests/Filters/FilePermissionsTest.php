@@ -9,6 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class FilePermissionsTest extends AbstractFilterTest
 {
     /**
@@ -25,9 +30,8 @@ class FilePermissionsTest extends AbstractFilterTest
     public function testSymLink()
     {
         $symLink = $this->getAssetsDir().'test_link';
-        // make symlink
         if (!file_exists($symLink)) {
-            symlink($this->getAssetsDir().'test_file_link_target.txt', $symLink);
+            symlink($this->getAssetsDir().'test_file_link_target.txt', $symLink); // make symlink
         }
 
         $filter = $this->getFilter();

@@ -9,6 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class UpperRomanTest extends AbstractFilterTest
 {
     /**

@@ -9,12 +9,17 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class UpperFirstTest extends AbstractFilterTest
 {
     public function testUpperFirst()
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), null);
+        $call(new Twig_Environment($this->getLoaderMock()), null);
     }
 }

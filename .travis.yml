@@ -29,7 +29,6 @@ matrix:
           group: edge
           env: COMPOSER_FLAGS="--dev"
     allow_failures:
-        - php: 7.1
         - php: hhvm-nightly
 
 install:
@@ -38,4 +37,5 @@ install:
 
 script:
     - phpunit --verbose
+    - phpenv config-rm xdebug.ini || return 0
     - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then php php-cs-fixer.phar --dry-run -v --config-file=.php_cs.dist fix; fi

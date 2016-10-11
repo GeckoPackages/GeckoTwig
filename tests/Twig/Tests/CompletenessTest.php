@@ -9,6 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class CompletenessTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -65,8 +70,8 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
 
     public function provideFilters()
     {
-        $filters = new ExtensionStub();
-        $filters = $filters->getFilters();
+        $filters = new FixturesTest();
+        $filters = $filters->getTwigFilters();
         $exploded = [];
         /** @var Twig_SimpleFilter[] $filters */
         foreach ($filters as $filter) {
@@ -117,8 +122,8 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
 
     public function provideTests()
     {
-        $tests = new ExtensionStub();
-        $tests = $tests->getTests();
+        $tests = new FixturesTest();
+        $tests = $tests->getTwigTests();
         $exploded = [];
         /** @var Twig_SimpleTest[] $tests */
         foreach ($tests as $filter) {
