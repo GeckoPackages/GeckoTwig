@@ -23,9 +23,17 @@ final class FixturesTest extends \Twig_Test_IntegrationTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getExtensions()
+    public function getTwigFilters()
     {
-        return [new ExtensionStub()];
+        return $this->getTwigAddOns('Filters');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTwigTests()
+    {
+        return $this->getTwigAddOns('Tests');
     }
 
     /**
@@ -34,5 +42,44 @@ final class FixturesTest extends \Twig_Test_IntegrationTestCase
     protected function getFixturesDir()
     {
         return __DIR__.'/Fixtures';
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return array
+     */
+    private function getTwigAddOns($type)
+    {
+        $dir = __DIR__.'/../../../src/Twig/'.$type;
+        if (!is_dir($dir)) {
+            throw new \InvalidArgumentException(sprintf('No directory known for type "%s".', $type));
+        }
+
+        $addOn = [];
+        $addOnDir = new DirectoryIterator($dir);
+        foreach ($addOnDir as $file) {
+            if ($file->isDot()) {
+                continue;
+            }
+
+            if ($file->isDir()) {
+                throw new UnexpectedValueException(sprintf('No directory was expected, got "%s".', $file->getPathname()));
+            }
+
+            $class = $file->getFilename();
+            $class = sprintf('GeckoPackages\\Twig\\%s\\%s', $type, substr($class, 0, -4));
+            if (!class_exists($class)) {
+                throw new UnexpectedValueException(sprintf('%s class "%s" not found.', $type, $class));
+            }
+
+            $addOn[] = new $class();
+        }
+
+        if (count($addOn) < 1) {
+            throw new UnexpectedValueException(sprintf('No Twig add on found to test in directory "%s".', $addOnDir));
+        }
+
+        return $addOn;
     }
 }

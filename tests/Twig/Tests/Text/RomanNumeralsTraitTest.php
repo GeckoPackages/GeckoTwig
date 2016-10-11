@@ -11,6 +11,11 @@
 
 use GeckoPackages\Twig\Text\RomanNumeralsTrait;
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class RomanNumeralsTraitTest extends \PHPUnit_Framework_TestCase
 {
     use RomanNumeralsTrait;

@@ -12,4 +12,4 @@
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/Twig/Tests/TwigTestTrait.php';
 require_once __DIR__.'/Twig/Tests/Filters/AbstractFilterTest.php';
-require_once __DIR__.'/Twig/Tests/ExtensionStub.php';
+require_once __DIR__.'/Twig/Tests/FixturesTest.php';

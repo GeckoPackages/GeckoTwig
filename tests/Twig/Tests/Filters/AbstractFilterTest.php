@@ -9,6 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 abstract class AbstractFilterTest extends \PHPUnit_Framework_TestCase
 {
     use TwigTestTrait;
@@ -22,5 +27,13 @@ abstract class AbstractFilterTest extends \PHPUnit_Framework_TestCase
         $class = 'GeckoPackages\\Twig\\Filters\\'.substr($reflection->getShortName(), 0, -4).'Filter';
 
         return new $class();
+    }
+
+    /**
+     * @return Twig_LoaderInterface
+     */
+    protected function getLoaderMock()
+    {
+        return $this->getMockBuilder('Twig_LoaderInterface')->getMock();
     }
 }
