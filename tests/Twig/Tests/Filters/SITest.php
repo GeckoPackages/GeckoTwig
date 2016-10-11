@@ -9,6 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class SITest extends AbstractFilterTest
 {
     /**
@@ -19,7 +24,7 @@ class SITest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, 'X');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, 'X');
     }
 
     /**
@@ -30,14 +35,22 @@ class SITest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 2, 'XYZ');
+        $call(new Twig_Environment($this->getLoaderMock()), 2, 'XYZ');
     }
 
     public function testRounding()
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $result = $call(new Twig_Environment(), 0.0009999999999999999, 'auto', '%number% %symbol%', 16, ',', '');
+        $result = $call(
+            new Twig_Environment($this->getLoaderMock()),
+            0.0009999999999999999,
+            'auto',
+            '%number% %symbol%',
+            16,
+            ',',
+            ''
+        );
         $this->assertInternalType('string', $result);
         $this->assertStringStartsWith('999,9999999999', $result);
         $this->assertStringEndsWith(' u', $result);

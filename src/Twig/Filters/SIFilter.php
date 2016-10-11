@@ -143,7 +143,7 @@ class SIFilter extends \Twig_SimpleFilter
                     throw new \Twig_Error_Runtime(sprintf('Unsupported symbol "%s".', $symbol));
                 }
 
-                $defaults = $env->getExtension('core')->getNumberFormat();
+                $defaults = $env->getExtension('Twig_Extension_Core')->getNumberFormat();
                 if (null === $decimal) {
                     $decimal = $defaults[0];
                 }

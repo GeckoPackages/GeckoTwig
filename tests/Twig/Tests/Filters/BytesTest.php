@@ -9,6 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
+/**
+ * @author SpacePossum
+ *
+ * @internal
+ */
 class BytesTest extends AbstractFilterTest
 {
     /**
@@ -19,7 +24,7 @@ class BytesTest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, 'c');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, 'c');
     }
 
     /**
@@ -30,7 +35,7 @@ class BytesTest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, 'MiK');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, 'MiK');
     }
 
     /**
@@ -41,7 +46,7 @@ class BytesTest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, 'xiB');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, 'xiB');
     }
 
     /**
@@ -52,7 +57,7 @@ class BytesTest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, '__invalid__');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, '__invalid__');
     }
 
     /**
@@ -63,7 +68,7 @@ class BytesTest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, 'bti');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, 'bti');
     }
 
     /**
@@ -74,6 +79,6 @@ class BytesTest extends AbstractFilterTest
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call(new Twig_Environment(), 1, 'bi');
+        $call(new Twig_Environment($this->getLoaderMock()), 1, 'bi');
     }
 }
