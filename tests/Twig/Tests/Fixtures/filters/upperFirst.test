@@ -1,13 +1,10 @@
 --TEST--
 Test for the "upperFirst" filter.
---CONDITION--
-function_exists('mb_get_info')
 --TEMPLATE--
 {{ ''|upperFirst }}
 {{ 0|upperFirst }}
 {{ 'hello world!'|upperFirst }}
 {{ 'HELLO WORLD'|upperFirst }}
-{{ 'čůrá Test'|upperFirst  }}
 --DATA--
 return array()
 --EXPECT--
@@ -15,4 +12,3 @@ return array()
 0
 Hello world!
 HELLO WORLD
-Čůrá Test
