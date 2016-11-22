@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class ReadMeGenerator
+final class ReadMeGenerator
 {
     /**
      * @return string
@@ -23,14 +23,14 @@ class ReadMeGenerator
     {
         $docDir = __DIR__.'/../../../docs/';
         $docs = [];
-        foreach (new DirectoryIterator($docDir) as $item) {
+        foreach (new \DirectoryIterator($docDir) as $item) {
             if (!$item->isDir() || $item->isDot()) {
                 continue;
             }
 
             $package = $item->getFilename();
             $docs[$package] = [];
-            foreach (new DirectoryIterator($item->getRealPath()) as $doc) {
+            foreach (new \DirectoryIterator($item->getRealPath()) as $doc) {
                 if ($doc->isDir() || $doc->isDot()) {
                     continue;
                 }

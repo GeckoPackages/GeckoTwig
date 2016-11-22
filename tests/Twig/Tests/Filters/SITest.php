@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class SITest extends AbstractFilterTest
+final class SITest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime

@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class DateTest extends AbstractFilterTest
+final class DateTest extends AbstractFilterTest
 {
     /**
      * Test the overloading of the date filter from the Twig core works.

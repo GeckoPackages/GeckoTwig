@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class ReadMeTest extends \PHPUnit_Framework_TestCase
+final class ReadMeTest extends \PHPUnit_Framework_TestCase
 {
     public function testReadMe()
     {
