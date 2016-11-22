@@ -1,10 +1,9 @@
 ### Numeric
 
-Test given value is numeric (behaviour like PHP 7 `is_numeric`).
+Test given value is numeric (behaviour like PHP 7).
 
 Test if a given value is `numeric`.
-The test will return false for hexadecimal strings as this will be the default behaviour in PHP 7.
-(http://php.net/manual/en/function.is-numeric.php)
+The test will return false for hexadecimal strings as this is the behaviour of [`is_numeric`](http://php.net/manual/en/function.is-numeric.php) on PHP 7.
 
 #### Examples
 

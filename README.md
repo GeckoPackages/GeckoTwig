@@ -5,24 +5,24 @@
 Provides additional filters and tests to be used with [Twig](http://twig.sensiolabs.org).
 
 #### Filters
-- **Bytes**
+- **Bytes**<br/>
   Formats a number of bytes with binary or SI prefix multiple, either automatically or by given symbol.
-- **Date**
+- **Date**<br/>
   Replacement for the date filter of [Twig](http://twig.sensiolabs.org/doc/filters/date.html), returns an empty string if the date is `empty()`.
-- **File Permissions**
+- **File Permissions**<br/>
   Formats file permissions in symbolic (UNIX) notation.
-- **Lower Roman**
+- **Lower Roman**<br/>
   Lowercase Roman numerals in a string.
-- **SI**
+- **SI**<br/>
   Formats a number with a SI symbol, either automatically or by given symbol.
-- **Upper First**
+- **Upper First**<br/>
   Uppercase the first character of a string.
-- **Upper Roman**
+- **Upper Roman**<br/>
   Uppercase Roman numerals in a string.
 
 #### Tests
-- **Numeric**
-  Test given value is numeric (behaviour like PHP 7 `is_numeric`).
+- **Numeric**<br/>
+  Test given value is numeric (behaviour like PHP 7).
 
 See below for details.
 
@@ -285,8 +285,7 @@ The default mode is `strict`.
 ### NumericTest
 ###### GeckoPackages\Twig\Tests\NumericTest
 Test if a given value is `numeric`.
-The test will return false for hexadecimal strings as this will be the default behaviour in PHP 7.
-(http://php.net/manual/en/function.is-numeric.php)
+The test will return false for hexadecimal strings as this is the behaviour of [`is_numeric`](http://php.net/manual/en/function.is-numeric.php) on PHP 7.
 
 #### Examples
 
@@ -307,3 +306,15 @@ The test will return false for hexadecimal strings as this will be the default b
 ### License
 
 The project is released under the MIT license, see the LICENSE file.
+
+### Contributions
+
+Contributions are welcome!
+
+### Semantic Versioning
+
+This project follows [Semantic Versioning](http://semver.org/).
+
+Kindly note:
+We do not keep a backwards compatible promise on the tests and tooling (such as document generation) of the project itself 
+nor the content and/or format of exception messages.
