@@ -1,0 +1,10 @@
+--TEST--
+Test for the "upperFirst" filter.
+--CONDITION--
+function_exists('mb_get_info')
+--TEMPLATE--
+{{ 'čůrá Test'|upperFirst  }}
+--DATA--
+return array()
+--EXPECT--
+Čůrá Test
