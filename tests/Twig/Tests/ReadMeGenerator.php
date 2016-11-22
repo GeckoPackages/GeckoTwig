@@ -67,7 +67,7 @@ class ReadMeGenerator
             /** @var array $package */
             foreach ($package as $values) {
                 $docs = $values['doc'];
-                $listing .= sprintf("- **%s**\n  %s\n", $docs['title'], $docs['short']);
+                $listing .= sprintf("- **%s**<br/>\n  %s\n", $docs['title'], $docs['short']);
                 $doc .= sprintf("### %s\n###### %s\n%s\n\n", $values['class']['short'], $values['class']['full'], $docs['full']);
             }
         }
@@ -102,6 +102,17 @@ Add the package to your `composer.json`.
 
 The project is released under the MIT license, see the LICENSE file.
 
+### Contributions
+
+Contributions are welcome!
+
+### Semantic Versioning
+
+This project follows [Semantic Versioning](http://semver.org/).
+
+Kindly note:
+We do not keep a backwards compatible promise on the tests and tooling (such as document generation) of the project itself 
+nor the content and/or format of exception messages.
 EOF;
         $readMeTemplate = str_replace('#GENERATED_LISTING#', $listing, $readMeTemplate);
 
