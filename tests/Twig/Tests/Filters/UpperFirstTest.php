@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class UpperFirstTest extends AbstractFilterTest
+final class UpperFirstTest extends AbstractFilterTest
 {
     public function testUpperFirst()
     {

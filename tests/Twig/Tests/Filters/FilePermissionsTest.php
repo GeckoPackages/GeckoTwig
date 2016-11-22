@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class FilePermissionsTest extends AbstractFilterTest
+final class FilePermissionsTest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime

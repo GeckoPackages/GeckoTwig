@@ -14,8 +14,10 @@
  *
  * @internal
  */
-class CompletenessTest extends \PHPUnit_Framework_TestCase
+final class CompletenessTest extends \PHPUnit_Framework_TestCase
 {
+    use TwigTestTrait;
+
     /**
      * Test the class name of a filter matches the name of the filter itself.
      *
@@ -70,8 +72,7 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
 
     public function provideFilters()
     {
-        $filters = new FixturesTest();
-        $filters = $filters->getTwigFilters();
+        $filters = $this->getTwigAddOns('Filters');
         $exploded = [];
         /** @var Twig_SimpleFilter[] $filters */
         foreach ($filters as $filter) {
@@ -122,8 +123,7 @@ class CompletenessTest extends \PHPUnit_Framework_TestCase
 
     public function provideTests()
     {
-        $tests = new FixturesTest();
-        $tests = $tests->getTwigTests();
+        $tests = $this->getTwigAddOns('Tests');
         $exploded = [];
         /** @var Twig_SimpleTest[] $tests */
         foreach ($tests as $filter) {

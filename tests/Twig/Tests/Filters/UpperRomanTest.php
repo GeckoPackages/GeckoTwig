@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class UpperRomanTest extends AbstractFilterTest
+final class UpperRomanTest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime

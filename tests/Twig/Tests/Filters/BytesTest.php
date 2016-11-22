@@ -14,7 +14,7 @@
  *
  * @internal
  */
-class BytesTest extends AbstractFilterTest
+final class BytesTest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime
