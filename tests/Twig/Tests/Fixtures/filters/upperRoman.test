@@ -33,6 +33,8 @@ Test for the "upperRoman" filter.
 {{ nonStrict|upperRoman }}
 {{ nonStrict|upperRoman('loose') }}
 {{ 'iixx, xiix, iii, mdcdiii, testxi, mmmm'|upperRoman('loose-order') }}
+{{ 1|upperRoman('loose-order') }}
+
 --DATA--
 return array('text' => 'mcmliv. chapter sub xi not XiCa', 'nonStrict'  => 'iiii, iiiiii, viiii, xxxxxx, mdccccx or even mmmmm')
 --EXPECT--
@@ -68,3 +70,4 @@ MMMCCCXII
 iiii, iiiiii, viiii, xxxxxx, mdccccx or even mmmmm
 IIII, IIIIII, VIIII, XXXXXX, MDCCCCX or even MMMMM
 IIXX, XIIX, III, MDCDIII, testxi, MMMM
+1

@@ -22,4 +22,15 @@ final class UpperFirstTest extends AbstractFilterTest
         $call = $filter->getCallable();
         $call(new Twig_Environment($this->getLoaderMock()), null);
     }
+
+    /**
+     * @expectedException Twig_Error_Runtime
+     * @expectedExceptionMessageRegExp #^Invalid input, expected string got \"stdClass\".$#
+     */
+    public function testUpperFirstInvalidInput()
+    {
+        $filter = $this->getFilter();
+        $call = $filter->getCallable();
+        $call(new Twig_Environment($this->getLoaderMock()), new \stdClass());
+    }
 }

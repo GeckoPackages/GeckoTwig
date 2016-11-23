@@ -18,12 +18,34 @@ final class UpperRomanTest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime
-     * @expectedExceptionMessageRegExp #^Unsupported match mode "invalid".$#
+     * @expectedExceptionMessageRegExp #^Unsupported match mode string\#invalid.$#
      */
-    public function testInvalidMatchMode()
+    public function testInvalidMatchModeString()
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call('invalid', 'invalid');
+        $call('XX', 'invalid');
+    }
+
+    /**
+     * @expectedException Twig_Error_Runtime
+     * @expectedExceptionMessageRegExp #^Unsupported match mode stdClass.$#
+     */
+    public function testInvalidMatchModeObject()
+    {
+        $filter = $this->getFilter();
+        $call = $filter->getCallable();
+        $call('XX', new \stdClass());
+    }
+
+    /**
+     * @expectedException Twig_Error_Runtime
+     * @expectedExceptionMessageRegExp #^Invalid input, expected string got \"stdClass\".$#
+     */
+    public function testInvalidInputObject()
+    {
+        $filter = $this->getFilter();
+        $call = $filter->getCallable();
+        $call(new \stdClass(), 'strict');
     }
 }
