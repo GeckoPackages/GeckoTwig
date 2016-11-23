@@ -22,9 +22,7 @@ final class BytesTest extends AbstractFilterTest
      */
     public function testFilterErrorSymbol1()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, 'c');
+        $this->callFilter($this->getEnvironment(), 1, 'c');
     }
 
     /**
@@ -33,9 +31,7 @@ final class BytesTest extends AbstractFilterTest
      */
     public function testFilterSymbol2()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, 'MiK');
+        $this->callFilter($this->getEnvironment(), 1, 'MiK');
     }
 
     /**
@@ -44,9 +40,7 @@ final class BytesTest extends AbstractFilterTest
      */
     public function testFilterSymbol3()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, 'xiB');
+        $this->callFilter($this->getEnvironment(), 1, 'xiB');
     }
 
     /**
@@ -55,9 +49,7 @@ final class BytesTest extends AbstractFilterTest
      */
     public function testFilterSymbol4()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, '__invalid__');
+        $this->callFilter($this->getEnvironment(), 1, '__invalid__');
     }
 
     /**
@@ -66,9 +58,7 @@ final class BytesTest extends AbstractFilterTest
      */
     public function testFilterSymbol5()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, 'bti');
+        $this->callFilter($this->getEnvironment(), 1, 'bti');
     }
 
     /**
@@ -77,8 +67,6 @@ final class BytesTest extends AbstractFilterTest
      */
     public function testFilterSymbol6()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, 'bi');
+        $this->callFilter($this->getEnvironment(), 1, 'bi');
     }
 }

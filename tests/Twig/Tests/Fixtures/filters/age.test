@@ -1,0 +1,38 @@
+--TEST--
+Test for the "age" filter.
+--TEMPLATE--
+--- positive
+{{ age_5_sec|age('s') }} sec.
+{{ age_1_hour_30_minutes|age('i') }} min.
+{{ age_1_hour_30_minutes|age('h') }} hour.
+{{ age_2_days_plus6_hours|age('d') }} day.
+{{ age_4_yours|age('y') }} years.
+{{ age_4_yours_3_4|age('y') }} years.
+--- scoped
+{{ age_5_sec|age('i')|number_format(3, ',') }} minutes.
+--- negative
+{{ min_age_180_minutes|age('h') }} hours.
+{{ min_age_180_minutes|age('s') }} seconds.
+
+--DATA--
+return array(
+    'age_5_sec' => new DateTime('-5 seconds'),
+    'age_1_hour_30_minutes' => new DateTime('-1 hour -30 minutes'),
+    'age_2_days_plus6_hours' => new DateTime('-2 days +6 hours'),
+    'age_4_yours' => new DateTime('-4 years'),
+    'age_4_yours_3_4' => new DateTime('-4 years -9 months'),
+    'min_age_180_minutes' => new DateTime('180 minutes'),
+);
+--EXPECT--
+--- positive
+5 sec.
+90 min.
+1.5 hour.
+1.75 day.
+4 years.
+4.75 years.
+--- scoped
+0,083 minutes.
+--- negative
+-3 hours.
+-10800 seconds.

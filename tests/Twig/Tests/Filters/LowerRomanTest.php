@@ -22,8 +22,6 @@ final class LowerRomanTest extends AbstractFilterTest
      */
     public function testMatchModeInvalid()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call('IV', 'invalid');
+        $this->callFilter('IV', 'invalid');
     }
 }

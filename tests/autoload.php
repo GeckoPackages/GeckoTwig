@@ -11,4 +11,5 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/Twig/Tests/TwigTestTrait.php';
+require_once __DIR__.'/Twig/Tests/AbstractTwigTest.php';
 require_once __DIR__.'/Twig/Tests/Filters/AbstractFilterTest.php';
