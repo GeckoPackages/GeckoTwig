@@ -18,9 +18,7 @@ final class UpperFirstTest extends AbstractFilterTest
 {
     public function testUpperFirst()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), null);
+        $this->callFilter($this->getEnvironment(), null);
     }
 
     /**
@@ -29,8 +27,6 @@ final class UpperFirstTest extends AbstractFilterTest
      */
     public function testUpperFirstInvalidInput()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), new \stdClass());
+        $this->callFilter($this->getEnvironment(), new \stdClass());
     }
 }
