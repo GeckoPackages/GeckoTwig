@@ -22,9 +22,7 @@ final class UpperRomanTest extends AbstractFilterTest
      */
     public function testInvalidMatchModeString()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call('XX', 'invalid');
+        $this->callFilter('XX', 'invalid');
     }
 
     /**
@@ -33,9 +31,7 @@ final class UpperRomanTest extends AbstractFilterTest
      */
     public function testInvalidMatchModeObject()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call('XX', new \stdClass());
+        $this->callFilter('XX', new \stdClass());
     }
 
     /**
@@ -44,8 +40,6 @@ final class UpperRomanTest extends AbstractFilterTest
      */
     public function testInvalidInputObject()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new \stdClass(), 'strict');
+        $this->callFilter(new \stdClass(), 'strict');
     }
 }

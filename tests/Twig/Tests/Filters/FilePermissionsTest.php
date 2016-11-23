@@ -22,9 +22,7 @@ final class FilePermissionsTest extends AbstractFilterTest
      */
     public function testFileNotExists()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call('invalid');
+        $this->callFilter('invalid');
     }
 
     public function testSymLink()
@@ -34,9 +32,7 @@ final class FilePermissionsTest extends AbstractFilterTest
             symlink($this->getAssetsDir().'test_file_link_target.txt', $symLink); // make symlink
         }
 
-        $filter = $this->getFilter();
-        $toCall = $filter->getCallable();
-        $result = $toCall($symLink);
+        $result = $this->callFilter($symLink);
         unlink($symLink);
         $this->assertSame('lrwxrwxrwx', $result);
     }

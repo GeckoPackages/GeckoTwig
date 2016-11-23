@@ -14,7 +14,7 @@
  *
  * @internal
  */
-abstract class AbstractFilterTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractFilterTest extends AbstractTwigTest
 {
     use TwigTestTrait;
 
@@ -30,10 +30,12 @@ abstract class AbstractFilterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return Twig_LoaderInterface
+     * To be replace with ... on PHP 5.6+ @see http://php.net/manual/en/functions.arguments.php#functions.variable-arg-list.new
      */
-    protected function getLoaderMock()
+    protected function callFilter()
     {
-        return $this->getMockBuilder('Twig_LoaderInterface')->getMock();
+        $filter = $this->getFilter();
+
+        return call_user_func_array($filter->getCallable(), func_get_args());
     }
 }

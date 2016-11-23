@@ -22,9 +22,7 @@ final class SITest extends AbstractFilterTest
      */
     public function testInvalidSymbol1()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 1, 'X');
+        $this->callFilter($this->getEnvironment(), 1, 'X');
     }
 
     /**
@@ -33,17 +31,13 @@ final class SITest extends AbstractFilterTest
      */
     public function testInvalidSymbol2()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $call(new Twig_Environment($this->getLoaderMock()), 2, 'XYZ');
+        $this->callFilter($this->getEnvironment(), 2, 'XYZ');
     }
 
     public function testRounding()
     {
-        $filter = $this->getFilter();
-        $call = $filter->getCallable();
-        $result = $call(
-            new Twig_Environment($this->getLoaderMock()),
+        $result = $this->callFilter(
+            $this->getEnvironment(),
             0.0009999999999999999,
             'auto',
             '%number% %symbol%',
