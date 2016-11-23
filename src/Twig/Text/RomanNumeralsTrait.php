@@ -57,9 +57,9 @@ namespace GeckoPackages\Twig\Text;
 trait RomanNumeralsTrait
 {
     /**
-     * @param string   $string    String to modify
+     * @param mixed    $string    string to modify
      * @param string   $matchMode 'strict', 'loose' or 'loose-order'
-     * @param callable $callBack  Actual code that does the manipulation
+     * @param callable $callBack  callback that does the manipulation
      *
      * @throws \Twig_Error_Runtime
      *
@@ -67,14 +67,21 @@ trait RomanNumeralsTrait
      */
     private function numeralRomanMatchCallBack($string, $matchMode, callable $callBack)
     {
+        if (is_object($string) || is_resource($string)) {
+            throw new \Twig_Error_Runtime(sprintf(
+                'Invalid input, expected string got "%s".',
+                is_object($string) ? get_class($string) : gettype($string)
+            ));
+        }
+
         switch ($matchMode) {
             case 'strict': {
-                // TODO: Empty strings are also captured. Remove this without performance impact
+                // Note: empty strings are also captured.
                 $matchMode = '#\b(M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b)#i';
                 break;
             }
             case 'loose': {
-                // TODO: Empty strings are also captured. Remove this without performance impact
+                // Note: empty strings are also captured.
                 $matchMode = '#\b(M*(?:CM|CD|D?C*)(?:XC|XL|L?X*)(?:IX|IV|V?I*)\b)#i';
                 break;
             }
@@ -83,7 +90,10 @@ trait RomanNumeralsTrait
                 break;
             }
             default: {
-                throw new \Twig_Error_Runtime(sprintf('Unsupported match mode "%s".', $matchMode));
+                throw new \Twig_Error_Runtime(sprintf(
+                    'Unsupported match mode %s.',
+                    is_object($matchMode) ? get_class($matchMode) : gettype($matchMode).'#'.(is_resource($matchMode) ? '' : $matchMode)
+                ));
             }
         }
 

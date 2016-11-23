@@ -30,6 +30,12 @@ class LowerRomanFilter extends \Twig_SimpleFilter
     {
         parent::__construct(
             'lowerRoman',
+            /**
+             * @param string $string
+             * @param string $matchMode
+             *
+             * @return string
+             */
             function ($string, $matchMode = 'strict') {
                 return $this->numeralRomanMatchCallBack(
                     $string,

@@ -56,13 +56,26 @@ class SIFilter extends \Twig_SimpleFilter
     {
         parent::__construct(
             'SI',
+            /**
+             * @param Twig_Environment $env
+             * @param int|float        $number
+             * @param string           $symbol
+             * @param string           $format
+             * @param int|null         $decimal      when null the number format set on the Core will be used
+             * @param string|null      $decimalPoint "
+             * @param string|null      $thousandSep  "
+             *
+             * @throws \Twig_Error_Runtime
+             *
+             * @return mixed
+             */
             function (Twig_Environment $env, $number, $symbol = 'auto', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
                 $symbolMag = [
                     'y', 'z', 'a', 'f', 'p', 'n', 'u', 'μ', 'm', 'c', 'd',  // < 1 note: double 'u'/'μ'
                     'da', 'h', 'k', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', // > 1 note: double 'k'/'K 'and two char. 'da'
                 ];
 
-                if (1 === strlen($symbol) || 'μ' === $symbol) {
+                if (1 === strlen($symbol) || 'μ' === $symbol) { // note: string length of 'μ' is 2
                     $index = array_search($symbol, $symbolMag, true);
                     if (false === $index) {
                         throw new \Twig_Error_Runtime(sprintf('Unsupported symbol "%s".', $symbol));

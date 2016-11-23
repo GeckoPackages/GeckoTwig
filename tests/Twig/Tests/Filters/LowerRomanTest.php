@@ -18,12 +18,12 @@ final class LowerRomanTest extends AbstractFilterTest
 {
     /**
      * @expectedException Twig_Error_Runtime
-     * @expectedExceptionMessageRegExp #^Unsupported match mode "invalid".$#
+     * @expectedExceptionMessageRegExp #^Unsupported match mode string\#invalid.$#
      */
     public function testMatchModeInvalid()
     {
         $filter = $this->getFilter();
         $call = $filter->getCallable();
-        $call('invalid', 'invalid');
+        $call('IV', 'invalid');
     }
 }
