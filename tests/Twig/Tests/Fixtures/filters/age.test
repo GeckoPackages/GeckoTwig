@@ -6,22 +6,37 @@ Test for the "age" filter.
 {{ age_1_hour_30_minutes|age('i') }} min.
 {{ age_1_hour_30_minutes|age('h') }} hour.
 {{ age_2_days_plus6_hours|age('d') }} day.
-{{ age_4_yours|age('y') }} years.
-{{ age_4_yours_3_4|age('y') }} years.
+{{ age_4_years|age('y') }} years.
+{{ age_4_years_3_4|age('Y') }} years.
 --- scoped
 {{ age_5_sec|age('i')|number_format(3, ',') }} minutes.
 --- negative
+{{ min_age_2_days_4_hours_3_mi_2_sec|age('d')|round }} days.
+{{ min_age_2_days_4_hours_3_mi_2_sec|age('h')|round }} hours.
+{{ min_age_2_days_4_hours_3_mi_2_sec|age('i')|round }} minutes.
+{{ min_age_2_days_4_hours_3_mi_2_sec|age('s') }} seconds.
 {{ min_age_180_minutes|age('h') }} hours.
+{{ min_age_180_minutes|age('i') }} minutes.
 {{ min_age_180_minutes|age('s') }} seconds.
+{{ min_age_75_sec|age('i') }} minutes.
+{{ min_age_75_sec|age('s') }} seconds.
+@@@
+{{ today|date_modify("-36 hours")|age('d') }} day.
+{{ today|date_modify("180 minutes")|age('h') }} hours.
+{{ today|date_modify("-180 minutes")|age('i') }} minutes.
+{{ today|date_modify("-180 minutes")|age('s') }} seconds.
 
 --DATA--
 return array(
-    'age_5_sec' => new DateTime('-5 seconds'),
-    'age_1_hour_30_minutes' => new DateTime('-1 hour -30 minutes'),
-    'age_2_days_plus6_hours' => new DateTime('-2 days +6 hours'),
-    'age_4_yours' => new DateTime('-4 years'),
-    'age_4_yours_3_4' => new DateTime('-4 years -9 months'),
-    'min_age_180_minutes' => new DateTime('180 minutes'),
+    'today'                             => new \DateTime(),
+    'age_4_years_3_4'                   => new \DateTime('-4 years -9 months'),
+    'age_4_years'                       => new \DateTime('-4 years'),
+    'age_2_days_plus6_hours'            => new \DateTime('-2 days +6 hours'),
+    'age_1_hour_30_minutes'             => new \DateTime('-1 hour -30 minutes'),
+    'age_5_sec'                         => new \DateTime('-5 seconds'),
+    'min_age_2_days_4_hours_3_mi_2_sec' => new \DateTime('2 days 4 hours 3 minutes 2 seconds'),
+    'min_age_180_minutes'               => new \DateTime('180 minutes'),
+    'min_age_75_sec'                    => new \DateTime('75 seconds'),
 );
 --EXPECT--
 --- positive
@@ -34,5 +49,17 @@ return array(
 --- scoped
 0,083 minutes.
 --- negative
+-2 days.
+-52 hours.
+-3123 minutes.
+-187382 seconds.
 -3 hours.
+-180 minutes.
 -10800 seconds.
+-1.25 minutes.
+-75 seconds.
+@@@
+1.5 day.
+-3 hours.
+180 minutes.
+10800 seconds.
