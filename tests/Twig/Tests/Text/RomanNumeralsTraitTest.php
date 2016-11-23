@@ -22,7 +22,7 @@ final class RomanNumeralsTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Twig_Error_Runtime
-     * @expectedExceptionMessageRegExp #^Unsupported match mode "__invalid__".$#
+     * @expectedExceptionMessageRegExp #^Unsupported match mode string\#__invalid__.$#
      */
     public function testInvalid()
     {
