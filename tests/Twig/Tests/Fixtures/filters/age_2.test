@@ -1,0 +1,17 @@
+--TEST--
+Test for the "age" filter.
+--TEMPLATE--
+{{ now|date_modify("-36 hours")|age('d') }} day.
+{{ now|date_modify("180 minutes")|age('h') }} hours.
+{{ now|date_modify("-180 minutes")|age('i') }} minutes.
+{{ now|date_modify("-180 minutes")|age('s') }} seconds.
+
+--DATA--
+return array(
+    'now' => new \DateTime(),
+);
+--EXPECT--
+1.5 day.
+-3 hours.
+180 minutes.
+10800 seconds.
