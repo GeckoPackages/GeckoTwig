@@ -20,15 +20,9 @@ Test for the "age" filter.
 {{ min_age_180_minutes|age('s') }} seconds.
 {{ min_age_75_sec|age('i') }} minutes.
 {{ min_age_75_sec|age('s') }} seconds.
-@@@
-{{ today|date_modify("-36 hours")|age('d') }} day.
-{{ today|date_modify("180 minutes")|age('h') }} hours.
-{{ today|date_modify("-180 minutes")|age('i') }} minutes.
-{{ today|date_modify("-180 minutes")|age('s') }} seconds.
 
 --DATA--
 return array(
-    'today'                             => new \DateTime(),
     'age_4_years_3_4'                   => new \DateTime('-4 years -9 months'),
     'age_4_years'                       => new \DateTime('-4 years'),
     'age_2_days_plus6_hours'            => new \DateTime('-2 days +6 hours'),
@@ -58,8 +52,3 @@ return array(
 -10800 seconds.
 -1.25 minutes.
 -75 seconds.
-@@@
-1.5 day.
--3 hours.
-180 minutes.
-10800 seconds.
