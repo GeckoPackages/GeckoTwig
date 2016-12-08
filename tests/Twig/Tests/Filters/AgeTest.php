@@ -17,7 +17,7 @@
 final class AgeTest extends AbstractFilterTest
 {
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Accuracy must be string, got NULL\#.$#
      */
     public function testFilterInvalidAccType()
@@ -26,7 +26,7 @@ final class AgeTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Accuracy must be any of \"y, d, h, i, s\", got "invalid".$#
      */
     public function testFilterInvalidAccValue()

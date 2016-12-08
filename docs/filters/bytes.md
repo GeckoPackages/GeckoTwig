@@ -3,9 +3,7 @@
 Formats a number of bytes with binary or SI prefix multiple, either automatically or by given symbol.
 
 Formats a number of bytes to a specific SI or binary unit or in a auto (best match) way.
-Specific units of IEC 60027-2 A.2 (1024 based) or SI (1000 based) are supported.
-(https://en.wikipedia.org/wiki/Binary_prefix)
-(https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes)
+Specific units of IEC 60027-2 A.2 (1024 based [binary prefix](https://en.wikipedia.org/wiki/Binary_prefix)) and SI (1000 based [SI prefix](https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes)) are supported.
 
 Symbols supported:
 

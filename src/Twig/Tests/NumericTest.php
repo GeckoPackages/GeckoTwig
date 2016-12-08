@@ -17,7 +17,7 @@ namespace GeckoPackages\Twig\Tests;
  * The test will return false for hexadecimal strings as this will be
  * the default behaviour in PHP 7.
  *
- * @see http://php.net/manual/en/function.is-numeric.php
+ * @see https://secure.php.net/manual/en/function.is-numeric.php
  *
  * @api
  *
@@ -48,7 +48,7 @@ final class NumericTestNode extends \Twig_Node_Expression_Test
         // Forward support towards PHP 7.
         // Strings in hexadecimal notation are no longer regarded as `numeric`,
         // for example: `is_numeric('0xf4c3b00c')` returns `false`.
-        // @see http://php.net/manual/en/function.is-numeric.php
+        // @see https://secure.php.net/manual/en/function.is-numeric.php
         $var = $compiler->getVarName();
         $compiler
             ->raw(sprintf('(is_numeric($%s = ', $var))

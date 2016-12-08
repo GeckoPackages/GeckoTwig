@@ -17,7 +17,7 @@
 final class LowerRomanTest extends AbstractFilterTest
 {
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Unsupported match mode string\#invalid.$#
      */
     public function testMatchModeInvalid()

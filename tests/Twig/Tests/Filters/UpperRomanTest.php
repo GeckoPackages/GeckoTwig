@@ -17,7 +17,7 @@
 final class UpperRomanTest extends AbstractFilterTest
 {
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Unsupported match mode string\#invalid.$#
      */
     public function testInvalidMatchModeString()
@@ -26,7 +26,7 @@ final class UpperRomanTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Unsupported match mode stdClass.$#
      */
     public function testInvalidMatchModeObject()
@@ -35,7 +35,7 @@ final class UpperRomanTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Invalid input, expected string got \"stdClass\".$#
      */
     public function testInvalidInputObject()

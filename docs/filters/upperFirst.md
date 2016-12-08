@@ -2,7 +2,7 @@
 
 Uppercase the first character of a string.
 
-Uppercase the first character of a string. For multi byte character support the filter will use `mbstring` (http://php.net/manual/en/book.mbstring.php)
+Uppercase the first character of a string. For multi byte character support the filter will use [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php).
 
 #### Examples
 

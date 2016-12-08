@@ -30,7 +30,7 @@ abstract class AbstractFilterTest extends AbstractTwigTest
     }
 
     /**
-     * To be replace with ... on PHP 5.6+ @see http://php.net/manual/en/functions.arguments.php#functions.variable-arg-list.new
+     * To be replace with ... on PHP 5.6+ @see https://secure.php.net/manual/en/functions.arguments.php#functions.variable-arg-list.new
      */
     protected function callFilter()
     {
