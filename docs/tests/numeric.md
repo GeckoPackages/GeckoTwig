@@ -3,7 +3,7 @@
 Test given value is numeric (behaviour like PHP 7).
 
 Test if a given value is `numeric`.
-The test will return false for hexadecimal strings as this is the behaviour of [`is_numeric`](http://php.net/manual/en/function.is-numeric.php) on PHP 7.
+The test will return false for hexadecimal strings as this is the behaviour of [`is_numeric`](https://secure.php.net/manual/en/function.is-numeric.php) on PHP 7.
 
 #### Examples
 

@@ -38,9 +38,9 @@ In `loose` mode, follows `strict` mode with the following exceptions:
 In `loose-order`, follows `loose` mode with the following exception:
 - Symbols may appear in any order.
 
-More details: https://en.wikipedia.org/wiki/Roman_numerals
-
 The default mode is `strict`.
+
+More details and background information on [Wikipedia](https://en.wikipedia.org/wiki/Roman_numerals).
 
 #### Examples
 

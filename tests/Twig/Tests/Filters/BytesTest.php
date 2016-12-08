@@ -17,7 +17,7 @@
 final class BytesTest extends AbstractFilterTest
 {
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Unsupported symbol 'c'.$#
      */
     public function testFilterErrorSymbol1()
@@ -26,7 +26,7 @@ final class BytesTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Binary symbol must be end with either 'b' or 'B', got "MiK".$#
      */
     public function testFilterSymbol2()
@@ -35,7 +35,7 @@ final class BytesTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Symbol must start with 'k', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', or 'Y', got "xiB".$#
      */
     public function testFilterSymbol3()
@@ -44,7 +44,7 @@ final class BytesTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Unsupported symbol "__invalid__".$#
      */
     public function testFilterSymbol4()
@@ -53,7 +53,7 @@ final class BytesTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Symbol must be binary \(b|B\[x\]\) or SI and must end with either 'b' or 'B', got "bti".$#
      */
     public function testFilterSymbol5()
@@ -62,7 +62,7 @@ final class BytesTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Binary symbol must be end with either 'b' or 'B', got "bi".$#
      */
     public function testFilterSymbol6()

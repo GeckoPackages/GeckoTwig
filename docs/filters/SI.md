@@ -2,8 +2,7 @@
 
 Formats a number with a SI symbol, either automatically or by given symbol.
 
-Formats a number with a SI symbol, either automatically or by given symbol.
-(https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes)
+Formats a number with a [SI symbol](https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes), either automatically or by given symbol.
 
 Symbols supported:
 
