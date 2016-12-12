@@ -10,7 +10,7 @@ Provides additional filters and tests to be used with [Twig](http://twig.sensiol
 - **Bytes**<br/>
   Formats a number of bytes with binary or SI prefix multiple, either automatically or by given symbol.
 - **Date**<br/>
-  Replacement for the date filter of [Twig](http://twig.sensiolabs.org/doc/filters/date.html), returns an empty string if the date is `empty()`.
+  Replacement for the date filter of Twig, returns an empty string if the date is `empty()`.
 - **File Permissions**<br/>
   Formats file permissions in symbolic (UNIX) notation.
 - **Lower Roman**<br/>
@@ -46,6 +46,16 @@ Add the package to your `composer.json`.
 # Package listing
 
 ## Filters
+
+### Usage
+
+You can add any of the filters to the Twig environment.
+Example:
+
+```php
+/** @var Twig_Environment $env */
+$env->addFilter(new \GeckoPackages\Twig\Filters\AgeFilter());
+```
 
 ### AgeFilter
 ###### GeckoPackages\Twig\Filters\AgeFilter
@@ -90,9 +100,7 @@ Pass a timezone as third argument for creating the current date. \*
 ### BytesFilter
 ###### GeckoPackages\Twig\Filters\BytesFilter
 Formats a number of bytes to a specific SI or binary unit or in a auto (best match) way.
-Specific units of IEC 60027-2 A.2 (1024 based) or SI (1000 based) are supported.
-(https://en.wikipedia.org/wiki/Binary_prefix)
-(https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes)
+Specific units of IEC 60027-2 A.2 (1024 based [binary prefix](https://en.wikipedia.org/wiki/Binary_prefix)) and SI (1000 based [SI prefix](https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes)) are supported.
 
 Symbols supported:
 
@@ -134,7 +142,7 @@ The filter uses the number formatting set on the `Core` extension of Twig. The o
 
 ### DateFilter
 ###### GeckoPackages\Twig\Filters\DateFilter
-Replacement of the date filter provided by Twig. Returns an empty string `""` if the give date to format is `empty()` (and not an `array`).
+Replacement of the date filter provided by [Twig](http://twig.sensiolabs.org/doc/filters/date.html). Returns an empty string `""` if the give date to format is `empty()` (and not an `array`).
 If it is not the method returns the value as provided by the default date filter of Twig.
 
 #### Examples
@@ -213,9 +221,9 @@ In `loose` mode, follows `strict` mode with the following exceptions:
 In `loose-order`, follows `loose` mode with the following exception:
 - Symbols may appear in any order.
 
-More details: https://en.wikipedia.org/wiki/Roman_numerals
-
 The default mode is `strict`.
+
+More details and background information on [Wikipedia](https://en.wikipedia.org/wiki/Roman_numerals).
 
 #### Examples
 
@@ -231,8 +239,7 @@ The default mode is `strict`.
 
 ### SIFilter
 ###### GeckoPackages\Twig\Filters\SIFilter
-Formats a number with a SI symbol, either automatically or by given symbol.
-(https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes)
+Formats a number with a [SI symbol](https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes), either automatically or by given symbol.
 
 Symbols supported:
 
@@ -287,7 +294,7 @@ The filter uses the number formatting set on the `Core` extension of Twig. The o
 
 ### UpperFirstFilter
 ###### GeckoPackages\Twig\Filters\UpperFirstFilter
-Uppercase the first character of a string. For multi byte character support the filter will use `mbstring` (http://php.net/manual/en/book.mbstring.php)
+Uppercase the first character of a string. For multi byte character support the filter will use [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php).
 
 #### Examples
 
@@ -324,10 +331,20 @@ The default mode is `strict`.
 
 ## Tests
 
+### Usage
+
+You can add any of the tests to the Twig environment.
+Example:
+
+```php
+/** @var Twig_Environment $env */
+$env->addTest(new \GeckoPackages\Twig\Tests\NumericTest());
+```
+
 ### NumericTest
 ###### GeckoPackages\Twig\Tests\NumericTest
 Test if a given value is `numeric`.
-The test will return false for hexadecimal strings as this is the behaviour of [`is_numeric`](http://php.net/manual/en/function.is-numeric.php) on PHP 7.
+The test will return false for hexadecimal strings as this is the behaviour of [`is_numeric`](https://secure.php.net/manual/en/function.is-numeric.php) on PHP 7.
 
 #### Examples
 
@@ -357,6 +374,6 @@ Contributions are welcome!
 
 This project follows [Semantic Versioning](http://semver.org/).
 
-Kindly note:
+<sub>Kindly note:
 We do not keep a backwards compatible promise on the tests and tooling (such as document generation) of the project itself 
-nor the content and/or format of exception messages.
+nor the content and/or format of exception messages.</sub>

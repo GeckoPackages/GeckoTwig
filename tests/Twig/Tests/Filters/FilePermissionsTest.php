@@ -17,7 +17,7 @@
 final class FilePermissionsTest extends AbstractFilterTest
 {
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Cannot determine permissions for "invalid".$#
      */
     public function testFileNotExists()

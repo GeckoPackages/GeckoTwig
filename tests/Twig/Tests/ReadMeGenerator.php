@@ -31,7 +31,7 @@ final class ReadMeGenerator
             $package = $item->getFilename();
             $docs[$package] = [];
             foreach (new \DirectoryIterator($item->getRealPath()) as $doc) {
-                if ($doc->isDir() || $doc->isDot()) {
+                if ($doc->isDir() || $doc->isDot() || '_package.md' === $doc->getFilename()) {
                     continue;
                 }
 
@@ -60,9 +60,17 @@ final class ReadMeGenerator
         $doc = '';
         $listing = '';
         foreach ($docs as $packageName => $package) {
+            $packageDescriptionFile = $docDir.'/'.$packageName.'/_package.md';
+            if (!is_readable($packageDescriptionFile)) {
+                throw new \RuntimeException(sprintf('Missing package description file "%s".', $packageDescriptionFile));
+            }
+
             $packageName = ucfirst($packageName);
             $listing .= sprintf("\n#### %s\n", $packageName);
-            $doc .= sprintf("\n## %s\n\n", $packageName);
+            $doc .= sprintf(
+                "\n## %s\n\n### Usage\n\n%s\n\n",
+                $packageName, rtrim(file_get_contents($packageDescriptionFile))
+            );
 
             /** @var array $package */
             foreach ($package as $values) {
@@ -110,9 +118,10 @@ Contributions are welcome!
 
 This project follows [Semantic Versioning](http://semver.org/).
 
-Kindly note:
+<sub>Kindly note:
 We do not keep a backwards compatible promise on the tests and tooling (such as document generation) of the project itself 
-nor the content and/or format of exception messages.
+nor the content and/or format of exception messages.</sub>
+
 EOF;
         $readMeTemplate = str_replace('#GENERATED_LISTING#', $listing, $readMeTemplate);
 

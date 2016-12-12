@@ -22,7 +22,7 @@ final class UpperFirstTest extends AbstractFilterTest
     }
 
     /**
-     * @expectedException Twig_Error_Runtime
+     * @expectedException \Twig_Error_Runtime
      * @expectedExceptionMessageRegExp #^Invalid input, expected string got \"stdClass\".$#
      */
     public function testUpperFirstInvalidInput()
