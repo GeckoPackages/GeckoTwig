@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the GeckoPackages.
  *
@@ -29,6 +31,6 @@ abstract class AbstractTwigTest extends \PHPUnit_Framework_TestCase
      */
     protected function getEnvironment()
     {
-        return new Twig_Environment($this->getLoaderMock());
+        return new \Twig_Environment($this->getLoaderMock());
     }
 }

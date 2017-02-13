@@ -11,8 +11,6 @@
 
 namespace GeckoPackages\Twig\Filters;
 
-use Twig_Environment;
-
 /**
  * Formats a number of bytes with binary or SI prefix multiple.
  *
@@ -50,20 +48,24 @@ use Twig_Environment;
  *
  * @author SpacePossum
  */
-class BytesFilter extends \Twig_SimpleFilter
+class BytesFilter extends \Twig_Filter
 {
     public function __construct()
     {
         parent::__construct(
             'bytes',
             /**
-             * @param int|float $value
-             * @param string    $symbol any SI ('KB', 'Mb', ..) or binary symbol ('KiB', 'Kib', 'MiB', ..), or 'auto,SI', 'auto,bin', 'b' or 'B'
-             * @param string    $format
+             * @param \Twig_Environment $env
+             * @param int|float         $number
+             * @param string            $symbol       any SI ('KB', 'Mb', ..) or binary symbol ('KiB', 'Kib', 'MiB', ..), or 'auto,SI', 'auto,bin', 'b' or 'B'
+             * @param string            $format
+             * @param int|null          $decimal
+             * @param string|null       $decimalPoint
+             * @param string|null       $thousandSep
              *
              * @return string
              */
-            function (Twig_Environment $env, $number, $symbol = 'auto,bin', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
+            function (\Twig_Environment $env, $number, $symbol = 'auto,bin', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
                 $symbolLength = strlen($symbol);
 
                 $symbolMag = [
