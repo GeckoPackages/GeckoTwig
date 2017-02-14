@@ -30,7 +30,8 @@ See below for details.
 
 ### Requirements
 
-PHP 5.4 (PHP7 supported). Optional HHVM support >= 3.9.
+PHP 7<br/>
+This package is framework agnostic.
 
 ### Install
 
@@ -39,9 +40,11 @@ Add the package to your `composer.json`.
 
 ```
 "require": {
-    "gecko-packages/gecko-twig" : "^v1.1"
+    "gecko-packages/gecko-twig" : "^v2.0"
 }
 ```
+
+<sub>Use `^v1.13` if you are using Twig 1.x</sub>
 
 # Package listing
 
@@ -375,5 +378,5 @@ Contributions are welcome!
 This project follows [Semantic Versioning](http://semver.org/).
 
 <sub>Kindly note:
-We do not keep a backwards compatible promise on the tests and tooling (such as document generation) of the project itself 
+We do not keep a backwards compatible promise on the tests and tooling (such as document generation) of the project itself
 nor the content and/or format of exception messages.</sub>

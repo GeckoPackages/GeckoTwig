@@ -11,8 +11,6 @@
 
 namespace GeckoPackages\Twig\Filters;
 
-use Twig_Environment;
-
 /**
  * Calculate the time diff (age) between a date and the current date.
  *
@@ -20,14 +18,14 @@ use Twig_Environment;
  *
  * @author SpacePossum
  */
-class AgeFilter extends \Twig_SimpleFilter
+class AgeFilter extends \Twig_Filter
 {
     public function __construct()
     {
         parent::__construct(
             'age',
             /**
-             * @param Twig_Environment                         $env
+             * @param \Twig_Environment                        $env
              * @param \DateTime|\DateTimeInterface|string|null $date
              * @param string                                   $acc          accuracy; any of 'y, d, h, i, s', default 'y'
              * @param \DateTimeZone|string|null|false          $timezoneDate timezone of date passed, null to use the default, false to leave unchanged
@@ -35,7 +33,7 @@ class AgeFilter extends \Twig_SimpleFilter
              *
              * @return string
              */
-            function (Twig_Environment $env, $date, $acc = 'y', $timezoneDate = null, $timezoneNow = null) {
+            function (\Twig_Environment $env, $date, $acc = 'y', $timezoneDate = null, $timezoneNow = null) {
                 $now = time();
 
                 if (!is_string($acc)) {

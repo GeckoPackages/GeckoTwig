@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the GeckoPackages.
  *
@@ -21,11 +23,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test the class name of a filter matches the name of the filter itself.
      *
-     * @param Twig_SimpleFilter $filter
+     * @param \Twig_Filter $filter
      *
      * @dataProvider provideFilters
      */
-    public function testFilterClassNaming(Twig_SimpleFilter $filter)
+    public function testFilterClassNaming(\Twig_Filter $filter)
     {
         $this->classNamingTest(ucfirst($filter->getName()).'Filter', $filter);
     }
@@ -33,11 +35,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test there is a doc file for each filter.
      *
-     * @param Twig_SimpleFilter $filter
+     * @param \Twig_Filter $filter
      *
      * @dataProvider provideFilters
      */
-    public function testFilterHasDocFile(Twig_SimpleFilter $filter)
+    public function testFilterHasDocFile(\Twig_Filter $filter)
     {
         $file = $this->getDocDir().'filters/'.$filter->getName().'.md';
         $this->assertFileExists($file, sprintf('Missing documentation file for Filter "%s".', $filter->getName()));
@@ -47,11 +49,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test there is a fixture test file for each filter.
      *
-     * @param Twig_SimpleFilter $filter
+     * @param \Twig_Filter $filter
      *
      * @dataProvider provideFilters
      */
-    public function testFilterHasFixtureTests(Twig_SimpleFilter $filter)
+    public function testFilterHasFixtureTests(\Twig_Filter $filter)
     {
         $file = __DIR__.'/Fixtures/filters/'.$filter->getName().'.test';
         $this->assertFileExists($file, sprintf('Missing fixture test file for Filter "%s".', $filter->getName()));
@@ -60,11 +62,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test there is a PHPUnit test file for each filter.
      *
-     * @param Twig_SimpleFilter $filter
+     * @param \Twig_Filter $filter
      *
      * @dataProvider provideFilters
      */
-    public function testFilterHasPHPUnitTests(Twig_SimpleFilter $filter)
+    public function testFilterHasPHPUnitTests(\Twig_Filter $filter)
     {
         $file = __DIR__.'/Filters/'.ucfirst($filter->getName()).'Test.php';
         $this->assertFileExists($file, sprintf('Missing PHPUnit test for Filter "%s".', $filter->getName()));
@@ -85,11 +87,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test the class name of a test matches the name of the test itself.
      *
-     * @param Twig_SimpleTest $test
+     * @param \Twig_Test $test
      *
      * @dataProvider provideTests
      */
-    public function testTestsClassNaming(Twig_SimpleTest $test)
+    public function testTestsClassNaming(\Twig_Test $test)
     {
         $this->classNamingTest(ucfirst($test->getName()).'Test', $test);
     }
@@ -97,11 +99,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test there is a doc file for each test.
      *
-     * @param Twig_SimpleTest $test
+     * @param \Twig_Test $test
      *
      * @dataProvider provideTests
      */
-    public function testTestHasDocFile(Twig_SimpleTest $test)
+    public function testTestHasDocFile(\Twig_Test $test)
     {
         $file = $this->getDocDir().'tests/'.$test->getName().'.md';
         $this->assertFileExists($file, sprintf('Missing documentation file for Test "%s".', $test->getName()));
@@ -111,11 +113,11 @@ final class CompletenessTest extends \PHPUnit_Framework_TestCase
     /**
      * Test there is a fixture test file for each test.
      *
-     * @param Twig_SimpleTest $test
+     * @param \Twig_Test $test
      *
      * @dataProvider provideTests
      */
-    public function testTestHasFixtureTests(Twig_SimpleTest $test)
+    public function testTestHasFixtureTests(\Twig_Test $test)
     {
         $file = __DIR__.'/Fixtures/tests/'.$test->getName().'.test';
         $this->assertFileExists($file, sprintf('Missing fixture test file for Test "%s".', $test->getName()));

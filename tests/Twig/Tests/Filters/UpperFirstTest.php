@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the GeckoPackages.
  *
@@ -16,9 +18,25 @@
  */
 final class UpperFirstTest extends AbstractFilterTest
 {
-    public function testUpperFirst()
+    /**
+     * @param string $expected
+     * @param mixed  $input
+     *
+     * @dataProvider provideCases
+     */
+    public function testUpperFirst(string $expected, $input)
     {
-        $this->callFilter($this->getEnvironment(), null);
+        $this->assertSame($expected, $this->callFilter($this->getEnvironment(), $input));
+    }
+
+    public function provideCases()
+    {
+        return [
+            ['', null],
+            ['0', 0],
+            ['1', 1],
+            ['1.3', 1.3],
+        ];
     }
 
     /**

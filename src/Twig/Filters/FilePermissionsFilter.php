@@ -11,7 +11,12 @@
 
 namespace GeckoPackages\Twig\Filters;
 
-class FilePermissionsFilter extends \Twig_SimpleFilter
+/**
+ * @api
+ *
+ * @author SpacePossum
+ */
+class FilePermissionsFilter extends \Twig_Filter
 {
     public function __construct()
     {

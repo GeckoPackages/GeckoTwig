@@ -11,14 +11,12 @@
 
 namespace GeckoPackages\Twig\Filters;
 
-use Twig_Environment;
-
 /**
  * @api
  *
  * @author SpacePossum
  */
-class DateFilter extends \Twig_SimpleFilter
+class DateFilter extends \Twig_Filter
 {
     public function __construct()
     {
@@ -27,14 +25,14 @@ class DateFilter extends \Twig_SimpleFilter
             /**
              * @see twig_date_format_filter
              *
-             * @param Twig_Environment                                  $env
+             * @param \Twig_Environment                                 $env
              * @param \DateTime|\DateTimeInterface|\DateInterval|string $date
              * @param string|null                                       $format
              * @param \DateTimeZone|string|null|false                   $timezone
              *
              * @return string
              */
-            function (Twig_Environment $env, $date, $format = null, $timezone = null) {
+            function (\Twig_Environment $env, $date, $format = null, $timezone = null) {
                 if (empty($date) && !is_array($date)) {
                     return '';
                 }

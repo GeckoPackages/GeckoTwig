@@ -11,8 +11,6 @@
 
 namespace GeckoPackages\Twig\Filters;
 
-use Twig_Environment;
-
 /**
  * Formats a number with a SI symbol.
  *
@@ -50,26 +48,26 @@ use Twig_Environment;
  *
  * @author SpacePossum
  */
-class SIFilter extends \Twig_SimpleFilter
+class SIFilter extends \Twig_Filter
 {
     public function __construct()
     {
         parent::__construct(
             'SI',
             /**
-             * @param Twig_Environment $env
-             * @param int|float        $number
-             * @param string           $symbol
-             * @param string           $format
-             * @param int|null         $decimal      when null the number format set on the Core will be used
-             * @param string|null      $decimalPoint "
-             * @param string|null      $thousandSep  "
+             * @param \Twig_Environment $env
+             * @param int|float         $number
+             * @param string            $symbol
+             * @param string            $format
+             * @param int|null          $decimal      when null the number format set on the Core will be used
+             * @param string|null       $decimalPoint "
+             * @param string|null       $thousandSep  "
              *
              * @throws \Twig_Error_Runtime
              *
              * @return mixed
              */
-            function (Twig_Environment $env, $number, $symbol = 'auto', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
+            function (\Twig_Environment $env, $number, $symbol = 'auto', $format = '%number%%symbol%', $decimal = null, $decimalPoint = null, $thousandSep = null) {
                 $symbolMag = [
                     'y', 'z', 'a', 'f', 'p', 'n', 'u', 'μ', 'm', 'c', 'd',  // < 1 note: double 'u'/'μ'
                     'da', 'h', 'k', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', // > 1 note: double 'k'/'K 'and two char. 'da'

@@ -22,7 +22,7 @@ use GeckoPackages\Twig\Text\RomanNumeralsTrait;
  *
  * @author SpacePossum
  */
-class UpperRomanFilter extends \Twig_SimpleFilter
+class UpperRomanFilter extends \Twig_Filter
 {
     use RomanNumeralsTrait;
 
