@@ -6,7 +6,7 @@
     "license": "MIT",
     "keywords": ["Twig", "Filter", "Bytes", "SI", "Roman"],
     "require": {
-        "php": "^5.4.0 || >=7.0 <7.2",
+        "php": ">=7.0 <7.2",
         "twig/twig": "^2.0"
     },
     "require-dev": {
