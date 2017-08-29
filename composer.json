@@ -10,6 +10,7 @@
         "twig/twig": "^1.26.0"
     },
     "require-dev": {
+        "phpunit/phpunit": "^4.8.35 || ^5.4.3",
         "symfony/phpunit-bridge": "^2.8|^3.0"
     },
     "suggest": {
