@@ -12,6 +12,8 @@ matrix:
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest""
         - php: 7.1
           env: COMPOSER_FLAGS="--prefer-stable"
+        - php: 7.2
+          env: COMPOSER_FLAGS="--prefer-stable"
         - php: nightly
           env: COMPOSER_FLAGS="--dev --ignore-platform-reqs"
         - php: hhvm-nightly
@@ -35,3 +37,4 @@ script:
     - vendor/bin/phpunit --verbose
     - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then php php-cs-fixer.phar --dry-run -vvv fix; fi
     - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then files_with_trailing_spaces=`find . -type f -not -path "./.git/*" -not -path "./vendor/*" -not -name "php-cs-fixer.phar" -exec egrep -nH " $" {} \;` && [[ $files_with_trailing_spaces ]] && echo $files_with_trailing_spaces && travis_terminate 1 || echo "No trailing spaces detected."; fi
+
